@@ -5,4 +5,8 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
            version="2.5">
 
+    <context-param>
+        <param-name/>
+        <param-value/>
+    </context-param>
 </web-app>

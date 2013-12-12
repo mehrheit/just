@@ -2,6 +2,8 @@ package com.berk.controller;
 
 import com.berk.domain.Account;
 import com.berk.domain.Role;
+import com.berk.dto.AccountListDto;
+import com.berk.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +25,8 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/records")
-    public @ResponseBody AccountListDto getAccounts(){
+    public @ResponseBody
+    AccountListDto getAccounts(){
         AccountListDto accountListDto = new AccountListDto();
         accountListDto.setAccounts(accountService.getAllAccounts());
         return accountListDto;
@@ -52,9 +55,9 @@ public class AccountController {
         Account newAccount = new Account();
         newAccount.setEmail(email);
         newAccount.setUsername(username);
-        return service.create(newAccount);
+        return accountService.create(newAccount);
     }
-    @RequestMapping(value="/updateAccount", method= RequestMethod.POST)
+    @RequestMapping(value="/update", method= RequestMethod.POST)
     public @ResponseBody Account updateAccount(
             @RequestParam String username,
             @RequestParam Integer role) {
@@ -64,15 +67,15 @@ public class AccountController {
         Account existingAccount = new Account();
         existingAccount.setUsername(username);
         existingAccount.setRole(existingRole);
-        return service.update(existingAccount);
+        return accountService.update(existingAccount);
     }
-    @RequestMapping(value="/deleteAccount", method=RequestMethod.POST)
+    @RequestMapping(value="/delete", method=RequestMethod.POST)
     public @ResponseBody Boolean deleteAccount(
             @RequestParam String username) {
 
         Account existingUser = new Account();
         existingUser.setUsername(username);
-        return service.delete(existingUser);
+        return accountService.delete(existingUser);
     }
 
 
