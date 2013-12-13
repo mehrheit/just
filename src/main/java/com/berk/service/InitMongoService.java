@@ -33,12 +33,14 @@ public class InitMongoService {
         Account oleg = new Account();
         oleg.setId(UUID.randomUUID().toString());
         oleg.setUsername("Oleg");
+        oleg.setEmail("oleg@email.com");
         oleg.setPassword("pass");
         oleg.setRole(adminRole);
 
         Account ivanov = new Account();
         ivanov.setId(UUID.randomUUID().toString());
         ivanov.setUsername("Ivanov");
+        ivanov.setEmail("ivanov@inbox.com");
         ivanov.setPassword("hArDpAsSwOrD");
         ivanov.setRole(accountRole);
 

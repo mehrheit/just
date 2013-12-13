@@ -64,7 +64,7 @@
 </head>
 
 <body>
-<h1 id='banner'>Record System</h1>
+<h1 id='banner'>Accounts</h1>
 <hr/>
 <table id='tableUsers'>
     <caption></caption>
@@ -72,8 +72,7 @@
     <tr>
         <th></th>
         <th>Username</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>E-mail</th>
         <th>Role</th>
     </tr>
     </thead>
@@ -87,11 +86,10 @@
 <div id='newForm'>
     <form>
         <fieldset>
-            <legend>Create New Record</legend>
+            <legend>Create New Account</legend>
             <label for='newUsername'>Username</label><input type='text' id='newUsername'/><br/>
             <label for='newPassword'>Password</label><input type='password' id='newPassword'/><br/>
-            <label for='newFirstName'>First Name</label><input type='text' id='newFirstName'/><br/>
-            <label for='newLastName'>Last Name</label><input type='text' id='newLastName'/><br/>
+            <label for='newEmail'>e-mail</label><input type='email' id='newEmail'/><br/>
             <label for='newRole'>Role</label>
             <select id='newRole'>
                 <option value='1'>Admin</option>
@@ -107,8 +105,7 @@
         <fieldset>
             <legend>Edit Record</legend>
             <input type='hidden' id='editUsername'/>
-            <label for='editFirstName'>First Name</label><input type='text' id='editFirstName'/><br/>
-            <label for='editLastName'>Last Name</label><input type='text' id='editLastName'/><br/>
+            <input type='text' id='editEmail'/><br/>
             <label for='editRole'>Role</label>
             <select id='editRole'>
                 <option value='1'>Admin</option>

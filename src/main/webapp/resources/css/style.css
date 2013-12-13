@@ -10,7 +10,7 @@ h1, hr {
 }
 
 #banner {
-    background: black;
+    background: rgba(0, 0, 237, 0.64);
     padding: 5px;
     color: white;
     margin-top: 5px;

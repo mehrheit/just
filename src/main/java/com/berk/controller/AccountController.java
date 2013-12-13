@@ -40,33 +40,38 @@ public class AccountController {
 
     @RequestMapping(value="/create", method=RequestMethod.POST)
     public @ResponseBody Account createAccount(
-            @RequestParam String id,
+//            @RequestParam String id,
             @RequestParam String email,
             @RequestParam String password,
             @RequestParam String username,
-            @RequestParam String birthday,
-            @RequestParam String location,
-            @RequestParam String photo,
-            @RequestParam String about,
+//            @RequestParam String birthday,
+//            @RequestParam String location,
+//            @RequestParam String photo,
+//            @RequestParam String about,
             @RequestParam Integer role) {
 
         Role newRole = new Role();
         newRole.setRole(role);
         Account newAccount = new Account();
+        newAccount.setRole(newRole);
         newAccount.setEmail(email);
         newAccount.setUsername(username);
+        newAccount.setPassword(password);
         return accountService.create(newAccount);
     }
     @RequestMapping(value="/update", method= RequestMethod.POST)
     public @ResponseBody Account updateAccount(
             @RequestParam String username,
+            @RequestParam String email,
             @RequestParam Integer role) {
 
         Role existingRole = new Role();
         existingRole.setRole(role);
         Account existingAccount = new Account();
         existingAccount.setUsername(username);
+        existingAccount.setEmail(email);
         existingAccount.setRole(existingRole);
+
         return accountService.update(existingAccount);
     }
     @RequestMapping(value="/delete", method=RequestMethod.POST)

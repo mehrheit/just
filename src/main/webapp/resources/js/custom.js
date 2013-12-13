@@ -8,18 +8,17 @@ function loadTable() {
 		
  		$('#tableUsers').find('tbody').remove();
  		
- 		for (var i=0; i<response.users.length; i++) {
+ 		for (var i=0; i<response.accounts.length; i++) {
 			var row = '<tr>';
 			row += '<td><input type="radio" name="index" id="index" value="'+i+'"></td>';
-			row += '<td>' + response.users[i].username + '</td>';
-			row += '<td>' + response.users[i].firstName + '</td>';
-			row += '<td>' + response.users[i].lastName + '</td>';
-			row += '<td>' + getRole(response.users[i].role.role) + '</td>';
+			row += '<td>' + response.accounts[i].username + '</td>';
+			row += '<td>' + response.accounts[i].email + '</td>';
+			row += '<td>' + getRole(response.accounts[i].role.role) + '</td>';
 			row += '</tr>';
 	 		$('#tableUsers').append(row);
  		}
  		
- 		$('#tableUsers').data('model', response.users);
+ 		$('#tableUsers').data('model', response.accounts);
 		toggleForms('hide'); ;
  	});
 }
@@ -28,8 +27,7 @@ function submitNewRecord() {
 	$.post(urlHolder.add, {
 			username: $('#newUsername').val(),
 			password: $('#newPassword').val(),
-			firstName: $('#newFirstName').val(),
-			lastName: $('#newLastName').val(),
+			email: $('#newEmail').val(),
 			role: $('#newRole').val()
 		}, 
 		function(response) {
@@ -65,8 +63,7 @@ function submitDeleteRecord() {
 function submitUpdateRecord() {
 	$.post(urlHolder.edit, {
 			username: $('#editUsername').val(),
-			firstName: $('#editFirstName').val(),
-			lastName: $('#editLastName').val(),
+			email: $('#editEmail').val(),
 			role: $('#editRole').val()
 		}, 
 		function(response) {
@@ -105,22 +102,19 @@ function hasSelected() {
 function fillEditForm() {
 	var selected = $('input:radio[name=index]:checked').val();
 	$('#editUsername').val( $('#tableUsers').data('model')[selected].username );
-	$('#editFirstName').val( $('#tableUsers').data('model')[selected].firstName );
-	$('#editLastName').val( $('#tableUsers').data('model')[selected].lastName );
+	$('#editEmail').val( $('#tableUsers').data('model')[selected].email );
 	$('#editRole').val( $('#tableUsers').data('model')[selected].role.role );
 }
 
 function resetNewForm() {
 	$('#newUsername').val('');
 	$('#newPassword').val('');
-	$('#newFirstName').val('');
-	$('#newLastName').val('');
+	$('#newEmail').val('');
 	$('#newRole').val('2');
 }
 
 function resetEditForm() {
-	$('#editFirstName').val('');
-	$('#editLastName').val('');
+	$('#editEmail').val('');
 	$('#editRole').val('2');
 }
 

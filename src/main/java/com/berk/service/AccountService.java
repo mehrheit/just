@@ -4,6 +4,7 @@ import com.berk.domain.Account;
 import com.berk.repository.AccountRepository;
 import com.berk.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,6 +13,7 @@ import java.util.UUID;
  * User: Oleg
  * Date: 07.12.13
  */
+@Service
 public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
@@ -39,9 +41,11 @@ public class AccountService {
         if (existingAccount == null) {
             return null;
         }
+
         existingAccount.setUsername(account.getUsername());
         existingAccount.getRole().setRole(account.getRole().getRole());
 
+//        System.out.println("Here name: " + account.getUsername());
         roleRepository.save(existingAccount.getRole());
         return accountRepository.save(existingAccount);
     }
